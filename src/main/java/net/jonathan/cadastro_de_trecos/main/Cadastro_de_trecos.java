@@ -1,9 +1,9 @@
-package net.luferat.cadastro_de_trecos;
+package net.jonathan.cadastro_de_trecos.main;
 
-import net.luferat.cadastro_de_trecos.setup.AppSetup;
-import net.luferat.cadastro_de_trecos.crud.Read;
+import net.jonathan.cadastro_de_trecos.setup.AppSetup;
+import net.jonathan.cadastro_de_trecos.crud.Read;
 import java.util.Scanner;
-import net.luferat.cadastro_de_trecos.crud.Delete;
+import net.jonathan.cadastro_de_trecos.crud.Delete;
 
 public class Cadastro_de_trecos extends AppSetup {
 

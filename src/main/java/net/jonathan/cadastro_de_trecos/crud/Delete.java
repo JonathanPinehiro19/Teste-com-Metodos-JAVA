@@ -1,11 +1,11 @@
-package net.luferat.cadastro_de_trecos.crud;
+package net.jonathan.cadastro_de_trecos.crud;
 
 import java.sql.SQLException;
-import static net.luferat.cadastro_de_trecos.Cadastro_de_trecos.clearScreen;
-import static net.luferat.cadastro_de_trecos.Cadastro_de_trecos.mainMenu;
-import static net.luferat.cadastro_de_trecos.crud.Read.read;
-import net.luferat.cadastro_de_trecos.db.DbConnection;
-import net.luferat.cadastro_de_trecos.setup.AppSetup;
+import static net.jonathan.cadastro_de_trecos.main.Cadastro_de_trecos.clearScreen;
+import static net.jonathan.cadastro_de_trecos.main.Cadastro_de_trecos.mainMenu;
+import static net.jonathan.cadastro_de_trecos.crud.Read.read;
+import net.jonathan.cadastro_de_trecos.db.DbConnection;
+import net.jonathan.cadastro_de_trecos.setup.AppSetup;
 
 public class Delete extends AppSetup {
 

@@ -1,4 +1,4 @@
-package net.luferat.cadastro_de_trecos.setup;
+package net.jonathan.cadastro_de_trecos.setup;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
