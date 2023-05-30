@@ -3,7 +3,9 @@ package net.jonathan.cadastro_de_trecos.main;
 import net.jonathan.cadastro_de_trecos.setup.AppSetup;
 import net.jonathan.cadastro_de_trecos.crud.Read;
 import java.util.Scanner;
+import net.jonathan.cadastro_de_trecos.crud.Create;
 import net.jonathan.cadastro_de_trecos.crud.Delete;
+import net.jonathan.cadastro_de_trecos.crud.Update;
 
 public class Cadastro_de_trecos extends AppSetup {
 
@@ -42,9 +44,14 @@ public class Cadastro_de_trecos extends AppSetup {
                 Read.read();
             }
             case "3" ->
-                newThing();
-            case "4" ->
-                editThing();
+            {
+                clearScreen();
+                Create.create();
+            }
+            case "4" ->{
+                clearScreen();
+                Update.update();
+            }
             case "5" -> {
                 clearScreen();
                 Delete.delete();
