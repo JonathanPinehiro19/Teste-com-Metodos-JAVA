@@ -1,18 +1,16 @@
-package net.jonathan.cadastro_de_trecos.crud;
+package net.luferat.cadastro_de_trecos.crud;
 
 import java.sql.SQLException;
 import java.util.Scanner;
-import net.jonathan.cadastro_de_trecos.db.DbConnection;
-import static net.jonathan.cadastro_de_trecos.main.Cadastro_de_trecos.clearScreen;
-import static net.jonathan.cadastro_de_trecos.main.Cadastro_de_trecos.exitProgram;
-import static net.jonathan.cadastro_de_trecos.main.Cadastro_de_trecos.mainMenu;
-import net.jonathan.cadastro_de_trecos.setup.AppSetup;
-
+import static net.luferat.cadastro_de_trecos.Cadastro_de_trecos.*;
+import net.luferat.cadastro_de_trecos.db.DbConnection;
+import net.luferat.cadastro_de_trecos.setup.AppSetup;
 
 public class Create extends AppSetup {
 
     public static void create() {
 
+        // Inicializa e reserva recursos.
         String sql;
 
         // Cabeçalho da view.
@@ -22,25 +20,35 @@ public class Create extends AppSetup {
 
         try {
 
+            // Instância de Scanner para obter dados do teclado.
             Scanner keyboard = new Scanner(System.in, "latin1");
 
+            // Obtém o nome.
             System.out.print("\tNome: ");
             String itemName = keyboard.nextLine().trim();
 
+            // Obtém a descrição.
             System.out.print("\tDescrição: ");
             String itemDescription = keyboard.nextLine().trim();
 
+            // Pede confirmação.
             System.out.print("\nOs dados acima estão corretos? [s/N] ");
             if (keyboard.next().trim().toLowerCase().equals("s")) {
 
+                // Insere os dados na tabela usando PreparetedStatement.
                 sql = "INSERT INTO " + DBTABLE + " (name, description) VALUES (?, ?)";
                 conn = DbConnection.dbConnect();
                 pstm = conn.prepareStatement(sql);
                 pstm.setString(1, itemName);
                 pstm.setString(2, itemDescription);
+
                 if (pstm.executeUpdate() == 1) {
+
+                    // Se o registro foi criado.
                     System.out.println("\nRegistro cadastrado!");
                 } else {
+
+                    // Falha ao criar registro.
                     System.out.println("Oooops! Algo deu errado!");
                 }
 
@@ -62,21 +70,21 @@ public class Create extends AppSetup {
 
             // Executa conforme a opção.
             switch (option) {
-                case "0" ->
+                case "0":
                     exitProgram();
-                case "1" -> {
+                    break;
+                case "1":
                     clearScreen();
                     mainMenu();
-                }
-                case "2" -> {
+                    break;
+                case "2":
                     clearScreen();
                     create();
-                }
-                default -> {
+                    break;
+                default:
                     clearScreen();
                     System.out.println("Oooops! Opção inválida!\n");
                     create();
-                }
             }
 
         } catch (SQLException error) {
@@ -87,5 +95,5 @@ public class Create extends AppSetup {
         }
 
     }
-    
+
 }

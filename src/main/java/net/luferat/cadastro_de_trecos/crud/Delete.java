@@ -1,12 +1,10 @@
-package net.jonathan.cadastro_de_trecos.crud;
+package net.luferat.cadastro_de_trecos.crud;
 
 import java.sql.SQLException;
-import static net.jonathan.cadastro_de_trecos.main.Cadastro_de_trecos.clearScreen;
-import static net.jonathan.cadastro_de_trecos.main.Cadastro_de_trecos.mainMenu;
-import static net.jonathan.cadastro_de_trecos.crud.Read.read;
-import net.jonathan.cadastro_de_trecos.db.DbConnection;
-import static net.jonathan.cadastro_de_trecos.main.Cadastro_de_trecos.exitProgram;
-import net.jonathan.cadastro_de_trecos.setup.AppSetup;
+import static net.luferat.cadastro_de_trecos.Cadastro_de_trecos.*;
+import static net.luferat.cadastro_de_trecos.Tools.showRes;
+import net.luferat.cadastro_de_trecos.db.DbConnection;
+import net.luferat.cadastro_de_trecos.setup.AppSetup;
 
 public class Delete extends AppSetup {
 
@@ -14,7 +12,7 @@ public class Delete extends AppSetup {
 
         // Reserva recursos para o banco de dados.
         int id = 0;
-        String sql = "";
+        String sql;
 
         // Cabeçalho da seção.
         System.out.println(appName + "\n" + appSep);
@@ -39,6 +37,8 @@ public class Delete extends AppSetup {
         }
 
         try {
+            
+            System.out.println(" ");
 
             // Verifica se o registro existe.
             sql = "SELECT * FROM " + DBTABLE + " WHERE id = ?";
@@ -49,12 +49,8 @@ public class Delete extends AppSetup {
 
             if (res.next()) {
 
-                // Se tem registro, exibe na view.
-                System.out.println(
-                        "\nID: " + res.getString("id") + "\n"
-                        + "  Nome: " + res.getString("name") + "\n"
-                        + "  Descrição: " + res.getString("description") + "\n"
-                );
+                // Se encontrou o registro, exibe na view.
+                showRes(res);
 
                 System.out.print("Tem certeza que deseja apagar o registro? [s/N] ");
                 if (scanner.next().trim().toLowerCase().equals("s")) {

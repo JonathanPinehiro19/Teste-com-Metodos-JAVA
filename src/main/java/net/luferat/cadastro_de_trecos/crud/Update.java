@@ -1,15 +1,11 @@
-
-package net.jonathan.cadastro_de_trecos.crud;
+package net.luferat.cadastro_de_trecos.crud;
 
 import java.sql.SQLException;
 import java.util.Scanner;
-import static net.jonathan.cadastro_de_trecos.crud.Read.read;
-import net.jonathan.cadastro_de_trecos.db.DbConnection;
-import static net.jonathan.cadastro_de_trecos.main.Cadastro_de_trecos.clearScreen;
-import static net.jonathan.cadastro_de_trecos.main.Cadastro_de_trecos.exitProgram;
-import static net.jonathan.cadastro_de_trecos.main.Cadastro_de_trecos.mainMenu;
-import net.jonathan.cadastro_de_trecos.setup.AppSetup;
-
+import static net.luferat.cadastro_de_trecos.Cadastro_de_trecos.*;
+import net.luferat.cadastro_de_trecos.db.DbConnection;
+import net.luferat.cadastro_de_trecos.setup.AppSetup;
+import static net.luferat.cadastro_de_trecos.Tools.showRes;
 
 public class Update extends AppSetup {
 
@@ -43,6 +39,8 @@ public class Update extends AppSetup {
 
         try {
 
+            System.out.println(" ");
+
             // Obtém o registro solicitado do banco de dados.
             sql = "SELECT * FROM " + DBTABLE + " WHERE id = ?";
             conn = DbConnection.dbConnect();
@@ -52,11 +50,7 @@ public class Update extends AppSetup {
             if (res.next()) {
 
                 // Se tem registro, exibe na view.
-                System.out.println(
-                        "\nID: " + res.getString("id") + "\n"
-                        + "  Nome: " + res.getString("name") + "\n"
-                        + "  Descrição: " + res.getString("description") + "\n"
-                );
+                showRes(res);
 
                 System.out.println("Insira os novos dados ou deixe em branco para manter os atuais:\n");
 
@@ -66,14 +60,13 @@ public class Update extends AppSetup {
                 System.out.print("\tNome: ");
                 String itemName = keyboard.nextLine().trim();
 
-                System.out.print("\tDescription: ");
+                System.out.print("\tDescrição: ");
                 String itemDescription = keyboard.nextLine().trim();
 
                 // Pede confirmação.
                 System.out.print("\nOs dados acima estão corretos? [s/N] ");
                 if (keyboard.next().trim().toLowerCase().equals("s")) {
 
-                    // Short Hand → https://www.w3schools.com/java/java_conditions_shorthand.asp
                     String saveName = (itemName.equals("")) ? res.getString("name") : itemName;
                     String saveDescription = (itemDescription.equals("")) ? res.getString("description") : itemDescription;
 
@@ -111,30 +104,35 @@ public class Update extends AppSetup {
 
                 // Executa conforme a opção.
                 switch (option) {
-                    case "0" -> exitProgram();
-                    case "1" -> {
+                    case "0":
+                        exitProgram();
+                        break;
+                    case "1":
                         clearScreen();
                         mainMenu();
-                    }
-                    case "2" -> {
+                        break;
+                    case "2":
                         clearScreen();
                         update();
-                    }
-                    default -> {
+                        break;
+                    default:
                         clearScreen();
                         System.out.println("Oooops! Opção inválida!\n");
                         update();
-                    }
                 }
 
             } else {
                 // Se não tem registro.
                 clearScreen();
                 System.out.println("Oooops! Não achei nada!\n");
-                read();
+                update();
             }
 
-        } catch (SQLException e) {
+        } catch (SQLException error) {
+
+            // Tratamento de erros.
+            System.out.println("Oooops! " + error.getMessage());
+            System.exit(0);
         }
 
     }
