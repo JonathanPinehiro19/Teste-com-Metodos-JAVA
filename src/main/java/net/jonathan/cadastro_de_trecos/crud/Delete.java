@@ -1,10 +1,10 @@
-package net.luferat.cadastro_de_trecos.crud;
+package net.jonathan.cadastro_de_trecos.crud;
 
 import java.sql.SQLException;
-import static net.luferat.cadastro_de_trecos.Cadastro_de_trecos.*;
-import static net.luferat.cadastro_de_trecos.Tools.showRes;
-import net.luferat.cadastro_de_trecos.db.DbConnection;
-import net.luferat.cadastro_de_trecos.setup.AppSetup;
+import static net.jonathan.cadastro_de_trecos.Cadastro_de_trecos.*;
+import static net.jonathan.cadastro_de_trecos.Tools.showRes;
+import net.jonathan.cadastro_de_trecos.db.DbConnection;
+import net.jonathan.cadastro_de_trecos.setup.AppSetup;
 
 public class Delete extends AppSetup {
 
@@ -55,7 +55,7 @@ public class Delete extends AppSetup {
                 System.out.print("Tem certeza que deseja apagar o registro? [s/N] ");
                 if (scanner.next().trim().toLowerCase().equals("s")) {
 
-                    sql = "DELETE FROM " + DBTABLE + " WHERE id = ?";
+                    sql = "UPDATE " + DBTABLE + " SET status = '0' WHERE id = ?";
                     pstm = conn.prepareStatement(sql);
                     pstm.setInt(1, id);
                     if (pstm.executeUpdate() == 1) {

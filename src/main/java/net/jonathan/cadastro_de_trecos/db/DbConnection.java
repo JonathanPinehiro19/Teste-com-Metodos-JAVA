@@ -1,4 +1,4 @@
-package net.luferat.cadastro_de_trecos.db;
+package net.jonathan.cadastro_de_trecos.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import net.luferat.cadastro_de_trecos.setup.AppSetup;
+import net.jonathan.cadastro_de_trecos.setup.AppSetup;
 
 public class DbConnection extends AppSetup {
 

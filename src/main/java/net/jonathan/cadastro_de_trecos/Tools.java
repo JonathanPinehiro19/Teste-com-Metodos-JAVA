@@ -1,7 +1,8 @@
-package net.luferat.cadastro_de_trecos;
+package net.jonathan.cadastro_de_trecos;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 
 public class Tools {
 
@@ -9,8 +10,11 @@ public class Tools {
         try {
             System.out.println(
                     "ID: " + res.getString("id") + "\n"
-                    + "  Nome: " + res.getString("name") + "\n"
-                    + "  Descrição: " + res.getString("description") + "\n"
+                    + "  Nome: " + res.getString("nome") + "\n"
+                    + "  Descrição: " + res.getString("descricao") + "\n"
+                    + "  Localização: " + res.getString("localizacao") + "\n"
+                    + "  Data: " + res.getString("data") + "\n"
+                   
             );
         } catch (SQLException error) {
 
@@ -20,5 +24,7 @@ public class Tools {
         }
 
     }
+    
+                
 
 }

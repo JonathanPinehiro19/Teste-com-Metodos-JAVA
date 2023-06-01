@@ -1,16 +1,19 @@
-package net.luferat.cadastro_de_trecos.crud;
+package net.jonathan.cadastro_de_trecos.crud;
 
 import java.sql.SQLException;
-import net.luferat.cadastro_de_trecos.setup.AppSetup;
-import net.luferat.cadastro_de_trecos.db.DbConnection;
-import static net.luferat.cadastro_de_trecos.setup.AppSetup.*;
-import static net.luferat.cadastro_de_trecos.Cadastro_de_trecos.*;
-import static net.luferat.cadastro_de_trecos.Tools.showRes;
+import java.text.SimpleDateFormat;
+import net.jonathan.cadastro_de_trecos.setup.AppSetup;
+import net.jonathan.cadastro_de_trecos.db.DbConnection;
+import static net.jonathan.cadastro_de_trecos.setup.AppSetup.*;
+import static net.jonathan.cadastro_de_trecos.Cadastro_de_trecos.*;
+import static net.jonathan.cadastro_de_trecos.Tools.showRes;
 
 public class Read extends AppSetup {
 
     // Lista todos os registros.
     public static void readAll() {
+        
+        
 
         // Reserva recursos.
         String sql;
@@ -21,6 +24,7 @@ public class Read extends AppSetup {
         System.out.println(appSep + "\n");
 
         try {
+           
 
             // Consulta o banco de dados.
             sql = "SELECT * FROM " + DBTABLE;
@@ -73,6 +77,7 @@ public class Read extends AppSetup {
             System.out.println("Oooops! " + error.getMessage());
             System.exit(0);
         }
+       
 
     }
 

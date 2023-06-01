@@ -1,13 +1,13 @@
-package net.luferat.cadastro_de_trecos;
+package net.jonathan.cadastro_de_trecos;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import net.luferat.cadastro_de_trecos.setup.AppSetup;
-import net.luferat.cadastro_de_trecos.crud.Read;
-import net.luferat.cadastro_de_trecos.crud.Create;
-import net.luferat.cadastro_de_trecos.crud.Delete;
-import net.luferat.cadastro_de_trecos.crud.Search;
-import net.luferat.cadastro_de_trecos.crud.Update;
+import net.jonathan.cadastro_de_trecos.setup.AppSetup;
+import net.jonathan.cadastro_de_trecos.crud.Read;
+import net.jonathan.cadastro_de_trecos.crud.Create;
+import net.jonathan.cadastro_de_trecos.crud.Delete;
+import net.jonathan.cadastro_de_trecos.crud.Search;
+import net.jonathan.cadastro_de_trecos.crud.Update;
 
 public class Cadastro_de_trecos extends AppSetup {
 
