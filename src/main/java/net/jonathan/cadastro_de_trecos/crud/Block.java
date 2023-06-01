@@ -1,13 +1,16 @@
+
 package net.jonathan.cadastro_de_trecos.crud;
 
 import java.sql.SQLException;
-import static net.jonathan.cadastro_de_trecos.Cadastro_de_trecos.*;
+import static net.jonathan.cadastro_de_trecos.Cadastro_de_trecos.clearScreen;
+import static net.jonathan.cadastro_de_trecos.Cadastro_de_trecos.exitProgram;
+import static net.jonathan.cadastro_de_trecos.Cadastro_de_trecos.mainMenu;
 import static net.jonathan.cadastro_de_trecos.Tools.showRes;
 import net.jonathan.cadastro_de_trecos.db.DbConnection;
 import net.jonathan.cadastro_de_trecos.setup.AppSetup;
 
-public class Delete extends AppSetup {
 
+public class Block extends AppSetup {
     public static void delete() {
 
         // Reserva recursos para o banco de dados.
@@ -16,7 +19,7 @@ public class Delete extends AppSetup {
 
         // Cabeçalho da seção.
         System.out.println(appName + "\n" + appSep);
-        System.out.println("Apaga um registro");
+        System.out.println("Bloqueia um registro");
         System.out.println(appSep);
 
         try {
@@ -41,7 +44,7 @@ public class Delete extends AppSetup {
             System.out.println(" ");
 
             // Verifica se o registro existe.
-            sql = "SELECT *, DATE_FORMAT(data, '%d/%m/%Y às %H:%i') AS databr FROM " + DBTABLE + " WHERE id = ?";
+            sql = "SELECT * FROM " + DBTABLE + " WHERE id = ?";
             conn = DbConnection.dbConnect();
             pstm = conn.prepareStatement(sql);
             pstm.setInt(1, id);
@@ -113,5 +116,5 @@ public class Delete extends AppSetup {
         }
 
     }
-
+    
 }
