@@ -56,6 +56,13 @@ public class Update extends AppSetup {
 
                 // Instância de Scanner para obter dados do teclado.
                 Scanner keyboard = new Scanner(System.in, "latin1");
+                
+                // Obtém o nome.
+                /* Essa parte solicita ao usuário que digite o nome do item e armazena o valor na variável itemNome.
+                   Em seguida, verifica se o valor digitado está vazio. 
+                   Se estiver vazio, significa que o usuário não forneceu um novo valor para o nome e, 
+                   portanto, atribui o valor existente (obtido da variável res ou do banco de dados) à variável itemNome.
+                   Caso tenha digitado algo mantém os dados coletados no keyboard.nextline*/
 
                 System.out.print("\tNome: ");
                 String itemName = keyboard.nextLine().trim();
